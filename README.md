@@ -5,12 +5,12 @@ The current preprocessing code is very minimal and borrows from Guido Zuidhof's 
 I have added code to make the script fully automated, given the proper directory configuration:
 
 ./Input/  
-&nbsp;Training/  
-&nbsp;&nbsp;Paitent ID/  
-&nbsp;&nbsp;&nbsp;DICOM files  
-+ + Paitent ID/  
-+ + + DICOM files  
-+ + etc...
+&nbsp;&nbsp;Training/  
+&nbsp;&nbsp;&nbsp;&nbsp;Paitent ID/  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DICOM files  
+&nbsp;&nbsp;&nbsp;&nbsp;Paitent ID/  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DICOM files  
+&nbsp;&nbsp;&nbsp;&nbsp;etc...
 
 Files will be uploaded as they reach milestones in completion, starting with the initial preprocessing code.
 
