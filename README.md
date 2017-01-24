@@ -5,8 +5,8 @@ The current preprocessing code is very minimal and borrows from Guido Zuidhof's 
 I have added code to make the script fully automated, given the proper directory configuration:
 
 ./Input/  
-+ Training/  
-+ + Paitent ID/  
+~ Training/  
+~ ~ Paitent ID/  
 + + + DICOM files  
 + + Paitent ID/  
 + + + DICOM files  
