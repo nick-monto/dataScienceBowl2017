@@ -4,19 +4,13 @@ Repository holding my work for the 2017 Kaggle Bowl. The data files for this yea
 The current preprocessing code is very minimal and borrows from Guido Zuidhof's preprocessing tutorial.
 I have added code to make the script fully automated, given the proper directory configuration:
 
- ./Input/
- 
-    Training/
-    
-      Paitent ID/
-      
-        DICOM files
-        
-      Paitent ID/
-      
-        DICOM files
-        
-      etc...
+ ./Input/  
+    Training/  
+     Paitent ID/  
+      DICOM files  
+     Paitent ID/  
+      DICOM files  
+     etc...
 
 Files will be uploaded as they reach milestones in completion, starting with the initial preprocessing code.
 
