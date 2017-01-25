@@ -5,7 +5,7 @@ The current preprocessing code is very minimal and borrows from Guido Zuidhof's 
 I have added code to make the script fully automated, given the proper directory configuration:
 
 ./Input/  
-&nbsp;&nbsp;Sample_Images/    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*This will be the training folder*    
+&nbsp;&nbsp;Sample_training_images/    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*This will be the training folder*   
 &nbsp;&nbsp;&nbsp;&nbsp;Paitent ID/  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DICOM files  
 &nbsp;&nbsp;&nbsp;&nbsp;Paitent ID/  
