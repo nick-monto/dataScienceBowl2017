@@ -1,8 +1,7 @@
+
 # coding: utf-8
 
-# %matplotlib inline
-
-import numpy as np  # linear algebra
+import numpy as np
 import dicom
 import os
 import scipy.ndimage
@@ -11,10 +10,9 @@ from collections import OrderedDict
 
 SCRIPT_DIR = os.getcwd()
 INPUT_FOLDER = './Input/Sample_Images/'
+OUTPUT_FOLDER = './Input/Sample_training_images/'
 patients = os.listdir(INPUT_FOLDER)
 patients.sort()
-
-patients
 
 
 # Load the scans in given folder path
@@ -33,6 +31,8 @@ def load_scan(path):
 
     return slices
 
+
+# In[4]:
 
 def get_pixels_hu(scans):
     image = np.stack([s.pixel_array for s in scans])
@@ -56,6 +56,8 @@ def get_pixels_hu(scans):
 
     return np.array(image, dtype=np.int16)
 
+
+# In[5]:
 
 def resample(image, scan, new_spacing=[1, 1, 1]):
     # Determine current pixel spacing
@@ -84,8 +86,8 @@ def resample(image, scan, new_spacing=[1, 1, 1]):
 # plt.imshow(pat1_pixels[80], cmap=plt.cm.gray)
 # plt.show()
 
-
-# pix_resampled, spacing = resample(pat1_pixels, pat1, [1,1,1])
+#
+# pix_resampled, spacing = resample(pat1_pixels, pat1, [1, 1, 1])
 # print("Shape before resampling\t", pat1_pixels.shape)
 # print("Shape after resampling\t", pix_resampled.shape)
 
@@ -97,13 +99,38 @@ for i in patients:
 
 
 for key in patient_dict:
-    if not os.path.exists('Input/Sample_training_images/' + str(key)):
-        os.mkdir('Input/Sample_training_images/' + str(key))
-    os.chdir('Input/Sample_training_images/' + str(key))
+    if not os.path.exists(OUTPUT_FOLDER + str(key)):
+        os.makedirs(OUTPUT_FOLDER + str(key))
+    print('Successfully created a folder for ' + str(key) + '!')
+    os.chdir(OUTPUT_FOLDER + str(key))
     pat_pixels = get_pixels_hu(patient_dict[key])
+    print('Finished converting pixels to hu for ' + str(key) + '!')
     pix_resampled, spacing = resample(pat_pixels, patient_dict[key], [1, 1, 1])
+    print('Finished resampling the pixels for ' + str(key) + '!')
     for x in range(0, len(pix_resampled)):
         plt.imshow(pix_resampled[x], cmap=plt.cm.gray)
         plt.savefig('slice' + str(x) + '.png')
+        print('Saving slice' + str(x) + '...')
         plt.close()
+    print('Done processing ' + str(key) + '!')
     os.chdir(SCRIPT_DIR)
+
+# call this during training
+
+# MIN_BOUND = -1000.0
+# MAX_BOUND = 400.0
+#
+#
+# def normalize(image):
+#     image = (image - MIN_BOUND) / (MAX_BOUND - MIN_BOUND)
+#     image[image > 1] = 1.
+#     image[image < 0] = 0.
+#     return image
+#
+#
+# PIXEL_MEAN = 0.25
+#
+#
+# def zero_center(image):
+#     image = image - PIXEL_MEAN
+#     return image
